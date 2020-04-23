@@ -1,0 +1,29 @@
+/******************************************
+* General CSS rules for the entire site
+*******************************************/
+
+/******************************************
+* Navigation Rules
+*******************************************/
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li:first-child{
+    display: block;
+}
+
+ul li {
+    display: none;
+}
+
+ul li a {
+    text-decoration: none;
+    padding: 15px;
+    border: 1px black;
+}
+
+.show li{
+    display: block;
+}
