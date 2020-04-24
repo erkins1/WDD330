@@ -3,32 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Week 1 - Local Storage</title>
+    <link rel="stylesheet" type="text/css" href="../styles/generic.css">
+    <link rel="stylesheet" type="text/css" href="styles/week1.css">
 </head>
 <body>
     <header>
         <h1>Welcome to week 1!</h1>
     </header>
     <nav>
-        <a href="/index.html">Return to Portfolio</a>
+        <a href="../">Return to Portfolio</a>
     </nav>
 
     <main>
         <section>
             <h1>Week 1 Notes</h1>
+            <p>Good applications need bidirectional communication. Computers use input output and often save information to the computer.</p>
+            <p>Local Storage is used to </p>
         </section>
+        
         <section>
             <h1>Questions</h1>
             <p>How does local storage differ from Sessions and Cookies?</p>
             <p>How do we make sure it is deleted or expires?</p>
+            <p></p>
         </section>
+
         <section>
             <h1>Examples</h1>
+
+            <h3>Ex. 1</h3>
+            <div>
+                <h2>Story Editor</h2>
+                Story Name: <input id='name_input'></input>
+                <section>
+                    <button onclick='loadStory()'>Find and Edit It</button>
+                    <button onclick='saveStory()'>Save It</button>
+                    <button onclick='displayStory()'>Display It</button>
+                </section>
+                <textarea id='story_editor' placeholder='Wite a totally awesone story here.'></textarea>
+
+                <section id='story_display'></section>
+            </div>
+
+
+
+
         </section>
     </main>
 
     <footer>
         <p> &copy;2020 - Geoffrey Rogers</p>
     </footer>
+
+    <script src="scripts/week1.js"></script>
 </body>
 </html>

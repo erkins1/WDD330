@@ -3,11 +3,34 @@
 *******************************************/
 
 /******************************************
+* Sitewide stuff
+*******************************************/
+body {
+    margin: 0;
+    width: 100%;
+}
+
+*   {
+    box-sizing: border-box; /*box sizing */
+}
+
+*::before, *::after{
+    box-sizing: border-box;
+}
+
+/******************************************
+* Header Rules
+*******************************************/
+
+
+/******************************************
 * Navigation Rules
 *******************************************/
 ul {
     list-style: none;
     padding: 0;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black; 
 }
 
 ul li:first-child{
@@ -16,14 +39,29 @@ ul li:first-child{
 
 ul li {
     display: none;
+    padding: 10px;
+    min-height: 20px;
+    width: 100%;
+    background-color: rgb(14, 74, 238);
+    text-align: center;
+    border: 1px solid black;
 }
 
 ul li a {
     text-decoration: none;
-    padding: 15px;
-    border: 1px black;
+    font-weight: bold;
+    color: white;
 }
 
 .show li{
     display: block;
 }
+
+
+/******************************************
+* Footer
+*******************************************/
+footer {
+    text-align: center;
+}
+
