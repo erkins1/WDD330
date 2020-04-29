@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2</title>
+    <link rel="stylesheet" type="text/css" href="../styles/generic.css">
+</head>
+<body>
+    <header>
+
+    </header>
+    <nav>
+        <ul id="navigation">
+            <li><a href="#" id="menu" alt="Week 1">&equiv; Menu</a></li>
+            <li><a href="../">Return to Portfolio</a></li>
+            <li><a href="teamActivity.html">Team Activity</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Week 2 Notes</h1>
+        <a href="#" id="showNotes" >Click to Show Notes</a>
+        <section id='weeklyNotes' class='hide'>
+            <h3>Basics</h3>
+            <p>Global variables are declared outside of a function or block. However using globals is generally bad practice.</p>
+            <p>Template Literals are ways to insert JavaScript inside a string. The '${ }' is used to differentiate the JavaScript code.</p>
+            <p>The backslash can be used to allow special characters in a string.</p>
+            <h3>Arrays, Sets and Maps</h3>
+            <p>Arrays can be declared: const myArray = []; or const myArray = new Array();</p>
+            <p>Multidimensional Arrays are declared: const myArray = [[],[]];</p>
+            <p>Special Array Methods:</p>
+            <p>     array.pop()                 Removes the last item from array</p>
+            <p>     array.shift()               Removes the first item from array</p>
+            <p>     array.push('var')           Appends a new value to the end of array</p>
+            <p>     array.unshift('var')        Appends a new value to the beginning of array</p>
+            <p>     array.concat([new array])   Combines two arrays</p>
+            <p>     array.join('&')             Changes array into string separated by '&' (Default is ',')</p>
+            <p>     array.slice(2,4)            Copies index 2 - 4 of the array</p>
+            <p>     array.splice(2,1,'var')     Replaces index 2 with new element</p>
+            <p>     array.splice(2,0,'var')     Inserts new element into index 2 without removing elements</p>
+            <p>     array.splice(2,1)           Removes index 2</p>
+            <p>     array.reverse()             Reverse the order of the array</p>
+            <p>     array.sort()                Sorts the array alphabetically</p>
+            <p>     array.indexOf('var')        Finds the index of the parameter</p>
+            <p>     array.includes('var')       Returns if array has a parameter</p>
+            <p>     array.includes('var', 3)    Returns if array has parameter after index 3</p>
+            <p>A Set is essentially an array with no duplicates</p>
+            <p>Maps are lists of key value pairs. Essentially a dictionary.</p>
+            <p>     Maps are declared: const myMap = new Map();</p>
+            <p>     Entries are added: myMap.set(1, 'I');</p>
+            <p>     Use keys to get the associated value: myMap.get(4);</p>
+            <p>     Other Map methods are in JavaScript: Novice to Ninja p.g. 112-115</p>
+            <h3>Functions</h3>
+            <p>There are a few ways to define a function:</p>
+            <p>     Function Literals       function hello(){ some code; }</p>
+            <p>     Function Expressions    const goodbye = function(){ some code; }</p>
+            <p>                             const goodbye = function bye(){ some code; };</p>
+            <p>     Function Constructor    const hi = new Function('some code;');</p>
+            <p>     Arrow Functions         const square = x => x*x;</p>
+            <p>                             const add = (x,y) => x+y;</p>
+            <p>                             const hello = () => { const helloWorld = 'Hello World'; alert(helloWorld); }</p>
+            <p>Be aware of function hoisting when setting a function to a variable.</p>
+            <p>You can pass functions into a method by including a callback parameter that will accept a function.</p>
+
+        </section>
+        
+        <section id='weeklyQuestions'>
+            <h1>Questions</h1>
+            <p>Do global variables exists across different files as well?</p>
+            <p>Are there any advantaged to sets other than the no duplicates element?</p>
+            <p>Are there advantages to Maps over associative arrays?</p>
+            <p>Do Maps have to use numbers are their key value? Can they be strings?</p>
+            <p>I do not understand weak maps and weak sets.</p>
+
+        </section>
+
+        <section id='weeklyExamples'>
+            <h1>Examples</h1>
+
+            <h3>Ex. 1</h3>
+            <button onclick="btnBeginQuiz()">Start Quiz</button>
+
+
+            <h3>Ex. 2</h3>
+            <button onclick="btnReverseArray()">Reverse Arrays</button>
+            <div id="ex2Output"></div>
+            
+        </section>
+    </main>
+
+    <footer>
+        <p> &copy;2020 - Geoffrey Rogers</p>
+    </footer>
+
+    <script src="scripts/week2.js"></script>
+    <script src="../scripts/main.js"></script>
+</body>
+</html>
