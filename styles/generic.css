@@ -41,6 +41,7 @@ ul {
     border-bottom: 1px solid black; 
 }
 
+/* This is for the Menu item in the nav bar */
 ul li:first-child{
     display: block;
 }

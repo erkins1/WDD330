@@ -22,14 +22,34 @@
         <h1>Week 3 Notes</h1>
         <a href="#" id="showNotes" >Click to Show Notes</a>
         <section id='weeklyNotes' class='hide'>
-            <h3></h3>
-            <p></p>
-            
+            <h3>Objects</h3>
+            <p>Objects are created: const objectName = {};</p>
+			<p>Properties can be accessed with dot or bracket notation</p>
+			<p>Can also have computed properties p. 171</p>
+            <p>If a property doesn't exist, it will return undefined</p>
+			<p>Objects can contain other objects (nested)</p>
+            <p>get and set methods help to access private variables</p>
+			<p>The Math object is a good example of an object</p>
+			<h3>Document Object Model</h3>
+			<p>The DOM is an object that represents the associated html doc</p>
+			<p>Like other objects, the DOM has attributes and methods allowing us to change the object</p>
+			<p>There are lots of methods to learn (p. 216)</p>
+			<h3>Events</h3>
+			<p>Event listeners allow functions to run when the user preforms an action</p>
+			<p>This is better than an infinate loop that looks for an action to be preformed</p>
+			<p>Events can be added like this: document.body.addEventListener("click", doSomething);</p>
+			<p>HTML events can be placed in the html tags with an onclick attribute: &lt;p onclick="console.log('You Clicked Me!')"></p>
+			<p>Use event.target to know what triggered the event</p>
+			<p>Use event.pageX, event.pageY, event.screenX, event.screenY to know corrdinates</p>
+			<p>Types of events:</p>
+			<p>click, mousedown, mouseup, dblclick, mousemove, keydown, keyup, keypress, touches, touchend, </p>
+			
         </section>
         
         <section id='weeklyQuestions'>
             <h1>Questions</h1>
-            <p></p>
+            <p>Are there other types of events that we can use to trigger actions? For example, from an external device such as a joystick?</p>
+			<p>The formatting of objects remind me of json's. Is there a connection? Could a json be considered a list of objects?</p>
 
         </section>
 
@@ -37,7 +57,10 @@
             <h1>Examples</h1>
 
             <h3>Ex. 1</h3>
-            
+            <h3>Balloon</h3>
+			<p id="balloon">🎈</p>
+			
+			
         </section>
     </main>
 
