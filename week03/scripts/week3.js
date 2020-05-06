@@ -1,17 +1,7 @@
 "use strict";
 /* Reading examples */
 
-/* Ex. 1 - Balloon *
-document.body.addEventListener('keyup', (event) => {
-    console.log(event.key);
-    if(event.key == 'ArrowUp'){
-        growBalloon();
-    }
-    else if (event.key == 'ArrowDown'){
-        shrinkBalloon();
-    }
-});*/
-
+/* Ex. 1 - Balloon */
 //Add the event listener
 document.body.addEventListener('keyup', balloonController);
 
@@ -55,5 +45,5 @@ function shrinkBalloon(){
     balloon.style.fontSize = (size * .9) + "px";
 }
 
-/* TeamActivity */
+
 
