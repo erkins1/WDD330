@@ -48,12 +48,24 @@ export default class Hikes {
         return this.getAllHikes().find(hike => hike.name === hikeName);
     }
     //show a list of hikes in the parentElement
-    showHikeList() {}
+    showHikeList() {
+        hikeList.forEach(hike => {
+            this.parentElement.appendChild(renderOneHikeLight(hike));
+        });
+
+    }
     // show one hike with full details in the parentElement
-    showOneHike(hikeName) {}
+    showOneHike(event) {
+        console.log("Event Triggered!");       
+        let detailHike = hikeList.filter(hike => hike.name == event.target.innerHTML)
+        document.querySelector(`#${detailHike[0].name.replace(" ", "")}`).classList.toggle('hide');
+    }
     // in order to show the details of a hike ontouchend we will need to attach a listener AFTER the list of hikes has been built. The function below does that.
     addHikeListener() {
         // We need to loop through the children of our list and attach a listener to each, remember though that children is a nodeList...not an array. So in order to use something like a forEach we need to convert it to an array.
+        document.querySelectorAll(".hikeName").forEach(element => {
+            element.addEventListener("touchend", this.showOneHike);
+        });
     }
     buildBackButton() {
         const backButton = document.createElement("button");
@@ -67,18 +79,29 @@ function renderHikeList(parent, hikes) {}
 
 function renderOneHikeLight(hike) {
     const item = document.createElement("li");
-    item.innerHTML = ` <h2>${hike.name}</h2>
-    <div class="image"><img src="${imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}"></div>
-    <div>
-            <div>
-                <h3>Distance</h3>
-                <p>${hike.distance}</p>
-            </div>
-            <div>
-                <h3>Difficulty</h3>
-                <p>${hike.difficulty}</p>
-            </div>
+    item.innerHTML = ` <h2 class="hikeName">${hike.name}</h2>
+    <div class="img_info">
+        <div class="image"><img src="${imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}"></div>
+        <div class="info">
+                <div>
+                    <p><strong>Distance: </strong></p>
+                    <p>${hike.distance}</p>
+                </div>
+                <div>
+                    <p><strong>Difficulty: </strong></p>
+                    <p>${hike.difficulty}</p>
+                </div>
+        </div>    
+    </div>
+    <div id='${hike.name.replace(" ", "")}' class="hide">
+        <p><strong>Description: </strong></p>
+        <p>${hike.description}</p>
+        <p><strong>Directions: </strong></p>
+        <p>${hike.directions}</p>
     </div>`;
+
+    //Might add more info with a hide class
+
     return item;
 }
 
