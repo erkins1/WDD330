@@ -5,42 +5,127 @@ import ToDoItem from "./todoItem.js";
 
 export default class ToDo {
     //Constructor check for or builds a todo array in local storage
-    //Does this actually need to do anything?
     //Is it better to just save the elementId here?
     constructor(){
-        this.todoList = localStorage.getItem("myToDoList");
-        console.log(this.todoList);
+        if(localStorage.getItem("myToDoList") === null){
+            this.list = [];
+        } else {
+            this.list = JSON.parse(localStorage.getItem("myToDoList"));
+        }
+        
     }
 
     //Build the entire todo list
-    displayToDoList(elementId) {
-
+    displayList(elementId) {
+        clearElement(elementId);
+        console.log("Did it work?");
+        this.list.forEach(item => {
+            document.getElementById(elementId).appendChild(buildToDoItem(item));
+        });
     }
 
     //Override to filter the list by completion
-    displayToDoList(elementId, filter){
-
+    filterList(elementId, filter){
+        clearElement(elementId);
+        this.list.forEach(item => {
+            if(item.Status === filter){
+                document.getElementById(elementId).appendChild(buildToDoItem(item));
+            }
+        });
     }
 
-    addToDoItem(todo_item){
-        this.todoList.push(new ToDoItem(todo_item));
-        updateLocal();
+    count(){
+        return this.list.length;
     }
 
+    indexOf(timestamp){
+        for (let i = 0; i < this.list.length; i++){
+            if(this.list[i].Timestamp == timestamp){
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    //Add a new to the todo list
+    //                                      Should this check for dupes?
+    add(todo_item){
+        this.list.push(new ToDoItem(todo_item));
+        //console.log(this.list);
+        updateLocal(this.list);
+    }
+
+    //Delete a todo item
+    //                                      Could use a try catch block instead
+    delete(timestamp){
+        if(this.indexOf(timestamp) != -1){
+            this.list.splice(this.indexOf(timestamp), 1);
+            updateLocal(this.list);
+        } else {
+            console.log("Failed to delete timestamp " + timestamp);
+        }
+    }
+
+    deleteCompleted(){
+        this.list = this.list.filter(item => item.Status === false);
+        updateLocal(this.list);
+    }
+
+    //Toggle the completion status of a todo item
+    //                                                          Sometimes seems to run twice?
+    toggle(timestamp){
+        if(this.indexOf(timestamp) != -1){
+            this.list[this.indexOf(timestamp)].Status = !this.list[this.indexOf(timestamp)].Status;
+            updateLocal(this.list);
+        } else {
+            console.log("Failed to toggle timestamp " + timestamp);
+        }
+    }
+
+    //Edit the name of a todo item
+    edit(timestamp, new_name){
+        if(this.indexOf(timestamp) != -1){
+            this.list[this.indexOf(timestamp)].Name = new_name;
+            updateLocal(this.list);
+        } else {
+            console.log("Failed to edit timestamp " + timestamp);
+        }
+    }
+    
+
 }
 
-//Temporary function during testing
-function createFakeList(){
-    this.todoList = [new ToDoItem("Item1"), new ToDoItem("Item2"), new ToDoItem("LastItem")];
-    console.log(this.todoList);
-    localStorage.setItem("myToDoList", JSON.stringify(this.todoList));
+//Clears the UL that holds the todo list
+function clearElement(elementId){
+    document.getElementById(elementId).innerHTML = "";
 }
 
-function getFromLocal(){
-    this.todoList = localStorage.getItem("myToDoList");
-    console.log(this.todoList);
+//Builds the HTML for a single todo item
+function buildToDoItem(item){
+    let output = document.createElement("li");
+
+    let checked = "";
+    let strikethrough = "";
+    if(item.Status === true){
+        checked = "checked";
+        strikethrough = `class="strikethrough"`;
+    }
+
+    output.innerHTML = `<div>
+        <input type="checkbox" id="${item.Timestamp}" value="${item.Status}" ${checked}>
+        <label for="${item.Timestamp}" ${strikethrough}>${item.Name}</label>
+    </div>
+    <div>
+        <p class='fas'>&#xf303;</p>
+        <p class="fa" >&#xf014;</p>
+    </div>`;
+    
+    console.log(output);
+    return output;
 }
 
-function updateLocal(){
-    localStorage.setItem("myToDoList", JSON.stringify(this.todoList))
+//Run every time the list is changed so that local storage is always updates
+function updateLocal(list){
+    localStorage.setItem("myToDoList", JSON.stringify(list))
 }

@@ -1,0 +1,70 @@
+/*****************************************
+* General CSS for the app
+*****************************************/
+
+/*Navigation*/
+#todoNav{
+    list-style: none;
+    padding: .5em;
+    margin: 0 .5em 0 .5em;
+
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+#todoNav {
+    background-color: rgb(177, 177, 177);
+}
+
+
+/*Delete menu */
+#delOptions {
+    list-style: none;
+    padding: 0 1.5em 0 .5em;
+    margin: 0 .5em 0 .5em;
+    text-align: right;
+}
+
+#delOptions li{
+    display: none;
+}
+
+.show li {
+    display: block!Important;               /*I should try to figure out a way to do this without Important*/
+}
+
+
+/*****************************************
+* CSS for the todo list
+*****************************************/
+#full_todo_list {
+    list-style: none;
+    padding: .5em;
+    margin: 0 .5em 0 .5em;
+    border: 2px solid black;
+}
+
+#full_todo_list li p {
+    margin: 0 0 0 5px;
+}
+
+#full_todo_list li {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    
+    /*margin: .5em 0 .5em 0;*/
+    font-size: 20px;
+    height: 40px;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}
+
+/*****************************************
+* CSS for the new todo item textbox
+*****************************************/
+
+

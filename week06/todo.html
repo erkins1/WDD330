@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo List</title>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/todo.css">
 </head>
 <body>
     <header>
@@ -11,12 +14,21 @@
     </header>
 
     <nav>
-
+        <ul id="todoNav">
+            <li>All</li>
+            <li>To-Do</li>
+            <li>Complete</li>
+            <li><a href="#" id="delMenu" class="fa" >&#xf014;</a></li>
+        </ul>
+        <ul id='delOptions'>
+            <li>Delete All</li>
+            <li>Delete Completed</li>
+        </ul>
     </nav>
 
     <main>
         <section id='listToDo'>
-            <ul>
+            <ul id="full_todo_list">
 
             </ul>
             <div id='footerToDo'>
@@ -25,7 +37,7 @@
         </section>
         <section id='addToDo'>
             <form id='submitToDo' name='newToDo' action=''>
-                <input type='text' name='textToDo'>
+                <input type='text' name='textToDo' placeholder="Add a new To-Do item..." required>
                 <button type="submit">+</button>
             </form>
         </section>
