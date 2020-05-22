@@ -1,6 +1,19 @@
 /*****************************************
 * General CSS for the app
 *****************************************/
+body {
+    margin: 0;
+    width: 100%;
+}
+
+*   {
+    box-sizing: border-box; /*box sizing */
+}
+
+*::before, *::after{
+    box-sizing: border-box;
+}
+
 
 /*Navigation*/
 #todoNav{
@@ -41,7 +54,7 @@
 #full_todo_list {
     list-style: none;
     padding: .5em;
-    margin: 0 .5em 0 .5em;
+    margin: 0 .5em 2.5em .5em;
     border: 2px solid black;
 }
 
@@ -53,6 +66,7 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+    align-items: center;
     
     /*margin: .5em 0 .5em 0;*/
     font-size: 20px;
@@ -67,4 +81,24 @@
 * CSS for the new todo item textbox
 *****************************************/
 
+#submitToDo {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    
+    display: flex;
+}
 
+#submitToDo input, #submitToDo button{
+    height: 40px;
+    font-size: 20px;
+    
+}
+
+#submitToDo input {
+    flex-grow: 1;
+}
+
+#submitToDo button {
+    width: 40px;
+}
