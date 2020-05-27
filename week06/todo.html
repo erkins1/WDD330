@@ -15,27 +15,27 @@
 
     <nav>
         <ul id="todoNav">
-            <li>All</li>
-            <li>To-Do</li>
-            <li>Complete</li>
+            <li id="all_todo" class="active">All</li>
+            <li id="todo_todo">To-Do</li>
+            <li id="complete_todo">Complete</li>
             <li><a href="#" id="delMenu" class="fa" >&#xf014;</a></li>
         </ul>
         <ul id='delOptions'>
-            <li>Delete All</li>
-            <li>Delete Completed</li>
+            <li id="del_All">Delete All</li>
+            <li id="del_Comp">Delete Completed</li>
         </ul>
     </nav>
 
     <main>
         <section id='listToDo'>
             <ul id="full_todo_list">
-
+                <li>No To-Do items! Hooray!</li>
             </ul>
         </section>
         <section id='addToDo'>
             <form id='submitToDo' name='newToDo' action=''>
-                <input type='text' name='textToDo' placeholder="Add a new To-Do item..." required>
-                <button type="submit">+</button>
+                <input id="new_todo_textbox" type='text' name='textToDo' placeholder="Add a new To-Do item..." required>
+                <button id="submit_button" type="submit">+</button>
             </form>
         </section>
     </main>

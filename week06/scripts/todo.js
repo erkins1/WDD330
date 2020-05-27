@@ -62,13 +62,21 @@ export default class ToDo {
         if(this.indexOf(timestamp) != -1){
             this.list.splice(this.indexOf(timestamp), 1);
             updateLocal(this.list);
+            return true;
         } else {
             console.log("Failed to delete timestamp " + timestamp);
+            return false;
         }
     }
-
+    
+    //Delete the completed todo items
     deleteCompleted(){
         this.list = this.list.filter(item => item.Status === false);
+        updateLocal(this.list);
+    }
+
+    deleteAll(){
+        this.list = [];
         updateLocal(this.list);
     }
 
@@ -78,8 +86,10 @@ export default class ToDo {
         if(this.indexOf(timestamp) != -1){
             this.list[this.indexOf(timestamp)].Status = !this.list[this.indexOf(timestamp)].Status;
             updateLocal(this.list);
+            return true;
         } else {
             console.log("Failed to toggle timestamp " + timestamp);
+            return false;
         }
     }
 
@@ -88,8 +98,10 @@ export default class ToDo {
         if(this.indexOf(timestamp) != -1){
             this.list[this.indexOf(timestamp)].Name = new_name;
             updateLocal(this.list);
+            return true;
         } else {
             console.log("Failed to edit timestamp " + timestamp);
+            return false;
         }
     }
     
@@ -109,19 +121,22 @@ function buildToDoItem(item){
     let strikethrough = "";
     if(item.Status === true){
         checked = "checked";
-        strikethrough = `class="strikethrough"`;
+        strikethrough = "strikethrough";
     }
 
-    output.innerHTML = `<div>
-        <input type="checkbox" id="${item.Timestamp}" value="${item.Status}" ${checked}>
-        <label for="${item.Timestamp}" ${strikethrough}>${item.Name}</label>
+    //Add the timestamp id
+    output.id = item.Timestamp;
+
+    output.innerHTML = `<div class="td-status ${strikethrough}">
+        <input type="checkbox" id="td-${item.Timestamp}" value="${item.Status}" ${checked}>
+        <label for="td-${item.Timestamp}" >${item.Name}</label>
     </div>
     <div>
-        <p class='fas'>&#xf303;</p>
-        <p class="fa" >&#xf014;</p>
+        <p class="fas td-edit">&#xf303;</p>
+        <p class="fa td-delete" >&#xf014;</p>
     </div>`;
     
-    console.log(output);
+    //console.log(output);
     return output;
 }
 
