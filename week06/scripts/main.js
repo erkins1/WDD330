@@ -10,7 +10,6 @@ todo.displayList("full_todo_list", true);
 addEventListeners_todo(); //This creates the event listeners for each todo item
 
 //Testing Stuff
-setActive("#todo_todo");
 
 /*****************************************
 * Site Navigation
@@ -18,6 +17,7 @@ setActive("#todo_todo");
 //Hide/show Delete Menu
 const toggleMenu = () => {
     document.querySelector('#delOptions').classList.toggle('show');
+    document.querySelector('#delOptions').classList.toggle('hide');
 }
 document.querySelector('#delMenu').addEventListener('click', toggleMenu);
 
@@ -61,10 +61,10 @@ document.querySelector("#submitToDo").addEventListener("submit", add_new_todo);
 //Functions for individual todo items
 function edit_ToDo_Item(event){
     console.log("Clicked to edit");
-    let newName = prompt("Edit this todo item:", event.path[2].id);
+    let newName = prompt("Edit this todo item:", todo.getNameByTimestamp(event.path[2].id));
 
     if(newName != null){
-        todo.edit(event.path[2].id, newName);
+        todo.edit(todo.getNameByTimestamp(event.path[2].id), newName);
         resetPage();
     } else {
         alert("You cannot leave the field blank!");
@@ -74,7 +74,7 @@ function edit_ToDo_Item(event){
 
 function delete_ToDo_Item(event){
     console.log("Clicked to delete");
-    if(confirm(`Are you sure you want to delete this To-Do item?\n${event.path[2].id}`)){
+    if(confirm(`Are you sure you want to delete this To-Do item?\n${todo.getNameByTimestamp(event.path[2].id)}`)){
         todo.delete(event.path[2].id);
         resetPage();
     } else {
@@ -122,12 +122,14 @@ function delete_All(){
     if(confirm("Are you sure you want to delete ALL todo items?")){
         todo.deleteAll();
     }
+    resetPage();
 }
 
 function delete_Completed(){
     if(confirm("Are you sure you want to delete all COMPLETED todo items?")){
         todo.deleteCompleted();
     }
+    resetPage();
 }
 
 /*****************************************

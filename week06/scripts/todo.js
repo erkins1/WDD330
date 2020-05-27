@@ -18,20 +18,27 @@ export default class ToDo {
     //Build the entire todo list
     displayList(elementId) {
         clearElement(elementId);
-        console.log("Did it work?");
-        this.list.forEach(item => {
-            document.getElementById(elementId).appendChild(buildToDoItem(item));
-        });
+        if(this.list.length < 1){
+            document.getElementById(elementId).appendChild(buildEmptyItem());
+        } else {
+            this.list.forEach(item => {
+                document.getElementById(elementId).appendChild(buildToDoItem(item));
+            });
+        }
     }
 
     //Override to filter the list by completion
     filterList(elementId, filter){
         clearElement(elementId);
-        this.list.forEach(item => {
-            if(item.Status === filter){
-                document.getElementById(elementId).appendChild(buildToDoItem(item));
-            }
-        });
+        if(this.list.length < 1){
+            document.getElementById(elementId).appendChild(buildEmptyItem());
+        } else {
+            this.list.forEach(item => {
+                if(item.Status === filter){
+                    document.getElementById(elementId).appendChild(buildToDoItem(item));
+                }
+            });
+        }
     }
 
     count(){
@@ -105,6 +112,10 @@ export default class ToDo {
         }
     }
     
+    //get the name by timestamp
+    getNameByTimestamp(timestamp){
+        return this.list[this.indexOf(timestamp)].Name;
+    }
 
 }
 
@@ -137,6 +148,12 @@ function buildToDoItem(item){
     </div>`;
     
     //console.log(output);
+    return output;
+}
+
+function buildEmptyItem(){
+    let output = document.createElement("li");
+    output.innerHTML = "No To-Do items! Hooray!";
     return output;
 }
 
