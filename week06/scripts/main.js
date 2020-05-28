@@ -60,11 +60,11 @@ document.querySelector("#submitToDo").addEventListener("submit", add_new_todo);
 *****************************************/
 //Functions for individual todo items
 function edit_ToDo_Item(event){
-    console.log("Clicked to edit");
+
     let newName = prompt("Edit this todo item:", todo.getNameByTimestamp(event.path[2].id));
 
-    if(newName != null){
-        todo.edit(todo.getNameByTimestamp(event.path[2].id), newName);
+    if(newName !== null && newName !== ""){
+        todo.edit(event.path[2].id, newName);
         resetPage();
     } else {
         alert("You cannot leave the field blank!");
@@ -73,7 +73,6 @@ function edit_ToDo_Item(event){
 }
 
 function delete_ToDo_Item(event){
-    console.log("Clicked to delete");
     if(confirm(`Are you sure you want to delete this To-Do item?\n${todo.getNameByTimestamp(event.path[2].id)}`)){
         todo.delete(event.path[2].id);
         resetPage();
