@@ -35,14 +35,7 @@
             <p>Asynchronous - Allows the program to keep running while waiting for responses</p>
             <p>JavaScript - AJAX enables js to send and receive requests</p>
             <p>XML - type of documentation used pass information around (somewhat replaced by json)</p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
+            <p>fetch api is used to query and get results</p>
             
         </section>
         
@@ -56,7 +49,39 @@
             <h1>Examples</h1>
 
             <h3>Ex. 1</h3>
+            <div>
+                <h4>A JavaScript Workbench</h4>
+                <textarea id="code">return "hi";</textarea>
+                <button id="button">Run</button>
+                <pre id="output"></pre>
+
+                <script>
+                    document.querySelector("#button").addEventListener("click", setupJava);
+
+                    function setupJava(){
+                        let javaCode = document.querySelector("#code").innerHTML;
+                        let output = '';
+                        
+                        try {
+                            output = Function(javaCode)();
+                        } catch(e) {
+                            output = e.message;
+                        }  finally {
+                            document.querySelector("#output").textContent = output;
+                        }
+                    }
+
+                </script>
+            </div>
             
+            <h3>Ex. 2</h3>
+            <div>
+                <h4>Conway's Game of Life</h4>
+                <div id="grid"></div>
+                <button id="next">Next generation</button>
+            </div>
+
+
         </section>
     </main>
 
