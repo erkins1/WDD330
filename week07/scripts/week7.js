@@ -10,7 +10,7 @@
  * 
  * Changes happen to the entire grid at once, not cell by cell
  * 
- * 
+ * THIS IS NOT COMPLETED AND IS NOT BEING USED
 **********************************/
 
 const Width = 30;
