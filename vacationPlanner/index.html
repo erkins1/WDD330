@@ -23,23 +23,16 @@
         <div id="map">
 
         </div>
+        <div>
+            <p id="exampleTest">Nope</p>
+        </div>
     </main>
-    <script>
-        // Initialize and add the map
-        function initMap() {
-          // The location of Uluru
-          var uluru = {lat: -25.344, lng: 131.036};
-          // The map, centered at Uluru
-          var map = new google.maps.Map(
-              document.getElementById('map'), {zoom: 10, center: uluru});
-          // The marker, positioned at Uluru
-          var marker = new google.maps.Marker({position: uluru, map: map});
-        }
-    </script>
+    <!-- <script src="libraries/marker/packages/markerclusterer/src/markerclusterer.js"></script> -->
+    <script src="scripts/googleMap.js"></script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCegkp704SJvHca7Nl3vergJDs5eXpVV_Q&callback=initMap">
     </script> 
-    <script async src="scripts/googleMap.js" type="module"></script>
+    
     
 </body>
 </html>
