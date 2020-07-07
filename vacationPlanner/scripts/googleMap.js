@@ -35,23 +35,27 @@ function initMap(){
                     clickable: true,
                     map: map
                     //icon: 
-                })
+                });
 
                 //Adding Event Listeners
-                /*
-                google.maps.event.addListener(markers, 'click', function() {
-                    console.log(markers.getPosition());
-                    //map.setCenter(marker.getPosition());
-                    document.getElementById("exampleTest").innerHTML = "I clicked on it!";
-                });
-                */
                 
-                marker.addListener("click", function(mapsMouseEvent){
-                    console.log(mapsMouseEvent);
-                    document.getElementById("exampleTest").innerHTML = mapsMouseEvent.latLng;
+                google.maps.event.addListener(marker, 'click', function(mapsMouseEvent) {
+                    console.log(marker);
+                    //map.setCenter(marker.getPosition());
                     map.setCenter(mapsMouseEvent.latLng);
+                    map.setZoom(10);
+                    document.getElementById("exampleTest").innerHTML = mapsMouseEvent.latLng;
                 });
-
+                
+                
+                /*
+                marker.addListener("click", function(mapsMouseEvent){
+                    //console.log(mapsMouseEvent);
+                    //document.getElementById("exampleTest").innerHTML = mapsMouseEvent.latLng;
+                    map.setCenter(mapsMouseEvent.latLng);
+                    map.setZoom(10);
+                });
+*/
 
                 /*
                 markers[markers.length-1].addListener("click", function() {
