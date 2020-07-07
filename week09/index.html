@@ -26,15 +26,28 @@
             <p>The window object is standard across all browsers</p>
             <p>The Browser Object Model is not standard and has info about the screen and browser</p>
             <p>There is no standard, but many browsers support common methods/properties</p>
-            <p>Global variables are acutally p</p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
+            <p>Global variables are acutally part of a global object in the Window object</p>
+            <p>Window Object functions:</p>
+            <p>.navigator.userAgent - get the browser</p>
+            <p>.location.href - current URL</p>
+            <p>.location.hostname - name of the domain</p>
+            <p>.history.go(1) - goes forward 1 page</p>
+            <p>.open(url, title, attributes) - opens a new window</p>
+            <p>.close() - close a window</p>
+            <p>.moveTo(x,y) - position window on screen</p>
+            <p>.screen.height - pixel height of screen</p>
+            <p>Cookies are saved locally on the users computer</p>
+            <p>Max storage of 4KB, 20 cookies per domain</p>
+            <p>Can be used to store information across visits</p>
+            <p>document.cookie = 'key=value'; - Store a cookie</p>
+            <p>Assinging new cookies will only append</p>
+            <p>Use the same key to assign new values</p>
+            <p>cookies are stored in a string like this: "key=value; key=value; key=value"</p>
+            <p>document.cookie.split("; ") to separate cookies</p>
+            <p>for (crumb of cookies){const [key,value] = crumb.split("=");} - Assigns pairs</p>
+            <p>Expiration dates can be set using a key-value pair "expires=time" (time is seconds)</p>
+            <p>cookies can be assigned to a path or domain as well</p>
+            <h3>HTML 5 APIs</h3>
             <p></p>
             <p></p>
             <p></p>
