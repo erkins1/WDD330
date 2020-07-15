@@ -26,14 +26,14 @@
     </header>
     <nav>
         <ul>
-            <li id="myPlansLnk"><a href="" alt="">My Plans</a></li>
-            <li id="searchLnk"><a href="" alt="">Search</a></li>
-            <li id="mapLnk"><a href="" alt="">Map</a></li>
+            <li id="myPlansLnk">My Plans</li>
+            <li id="searchLnk">Search</li>
+            <li id="mapLnk">Map</li>
         </ul>
     </nav>
     <main>
         <section id="homePg">
-            <ul id="usrVacation"></ul>
+            <ul id="usrVacation"><li>Loading...</li></ul>
         </section>
 
         <section id="searchPg" class="hidden">
@@ -45,11 +45,14 @@
         </section>
 
         <section id="mapPg" class="hidden">
-            <div id="closestMapBtn">Find my closest Lighthouse</div>
-            <div id="allMapBtn">See all Lighthouses</div>
+            <ul id="mapNavBar">
+                <li id="closestMapBtn">Find my closest Lighthouse</li>
+                <li id="plansMapBtn">See my Vacation plans</li>
+                <li id="allMapBtn">See all Lighthouses</li>
+            </ul>
         </section>
 
-        <div id="highlightedSelection" class="hidden"><button id="highlightAdd">Add to my plans</button></div>
+        <div id="highlightedSelection" class="hidden"><button id="highlightAdd" class="hidden">Add to my plans</button></div>
         <div id="map"></div>
 
     </main>

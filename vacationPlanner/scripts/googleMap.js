@@ -45,7 +45,7 @@ function initMap(){
         google.maps.event.addListener(marker, 'click', function() {
             // console.log(marker.id);
             map.setCenter(marker.getPosition());
-            buildHighlightDiv(marker.id);
+            buildHighlightDiv(marker.id, true);
             
             // infowindow.open(map, marker)
             //map.setCenter(mapsMouseEvent.latLng);
@@ -72,11 +72,11 @@ function getLighthouseData(){
 }
 
 //Builds the highlight div for the selected lighthouse
-function buildHighlightDiv(id){
+function buildHighlightDiv(id, canAdd){
     var lighthouse = getLighthouseData().filter(item => item.id == id)[0];
     const highlighted = document.querySelector("#highlightedSelection");
     
-    //Clear the highlighted details
+    //Reset highlighted details
     if(document.getElementById("highlightedDetails") != null){
         document.getElementById("highlightedDetails").remove();
     }
@@ -94,8 +94,15 @@ function buildHighlightDiv(id){
                     `;
     
     highlighted.appendChild(div);
-    //Maybe only unhide the button depending how this is called (callback?)
     highlighted.classList.remove("hidden");
+
+    //Hides or shows the add button, default is to hide
+    if(canAdd){
+        document.querySelector("#highlightAdd").classList.remove("hidden");
+    } else {
+        document.querySelector("#highlightAdd").classList.add("hidden");
+    }
+    
 }
 
 // //Creates a new map with a marker
@@ -114,7 +121,7 @@ function buildHighlightDiv(id){
 //     });
 // }
 
-function customMarkers(inputMarkers){
+function customMarkers(inputMarkers, canAdd){
     var center = {lat: 46.78333333, lng: -92.075};
     var bounds = new google.maps.LatLngBounds();
     var map = new google.maps.Map(document.getElementById('map'), {zoom: 10, center: center});
@@ -145,7 +152,7 @@ function customMarkers(inputMarkers){
 
         google.maps.event.addListener(marker, 'click', function() {
             map.setCenter(marker.getPosition());
-            buildHighlightDiv(marker.id);
+            buildHighlightDiv(marker.id, canAdd);
             map.setZoom(10);
         });
     });

@@ -2,15 +2,7 @@
  * Code for the plans class which stores info
  * about a users vacation plans
 *********************************************/
-/*
-class Destination{
-    constructor(input){
-        this.id = Date.now();
-        this.data = input;
-    }
 
-}
-*/
 import {getDistanceFromLatLonInKm} from './utilities.js';
 
 export default class Vacation {
@@ -53,6 +45,7 @@ export default class Vacation {
 
             //Add event listeners
             addDragEvents();
+            addLiEvents();
         }
     }
 
@@ -106,6 +99,42 @@ function buildLI(item){
     return output;
 }
 
+//Adds touch events for each list item
+function addLiEvents(){
+    let names = document.querySelectorAll(".destination_name");
+    let deletes = document.querySelectorAll(".destination_delImg");
+    let drags = document.querySelectorAll(".destination_dragImg");
+
+    //Shows the selected lighthouse in the highlighted section
+    names.forEach(li =>{
+        li.addEventListener("touchend", (event) =>{
+            buildHighlightDiv(event.target.parentElement.dataset.id);
+        });
+    });
+
+    //Deletes the seletected lighthouse
+    deletes.forEach(li =>{
+        li.addEventListener("touchend", (event) =>{
+            if(window.confirm("Are you sure you want to delete this lighthouse from your plans?")){
+                try {
+                    new Vacation("usrVacation").deleteDestination(event.target.parentElement.dataset.id);
+                    console.log("Successful Delete!");
+                } catch (e){
+                    console.log("Error deleting destination: " + e);
+                }
+            }
+        });
+    });
+
+    //Enables drag events 
+    drags.forEach(li =>{
+        li.addEventListener("touchend", (event) =>{
+            console.log("I dragged it...");
+        });
+    });
+}
+
+//Returns the distance between two objects
 function getDistance(loc1, loc2){
     return getDistanceFromLatLonInKm(loc1.Latitude, loc1.Longitude, loc2.Latitude, loc2.Longitude);
 }

@@ -49,10 +49,7 @@ function srchResultEvents(){
     console.log('adding events');
     document.querySelectorAll('.srchResult').forEach(element =>{
         element.addEventListener('touchend', (event) => {
-            console.log('Clicked!');
-            console.log(event.target.dataset.id);
+            buildHighlightDiv(event.target.dataset.id, true);
         });
-        console.log('Added event');
     });
 }
-
