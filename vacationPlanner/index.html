@@ -4,31 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vacation Planner</title>
-    <style>
-        /* Set the size of the div element that contains the map */
-       #map {
-         height: 400px;  /* The height is 400 pixels */
-         width: 100%;  /* The width is the width of the web page */
+    <link rel="stylesheet" type="text/css" href="styles/stylesheet.css">
+    <!-- <style>
+        #ulList li {
+            height: 3em;
         }
-     </style>
+        .dropLoc{
+            background-color: red;
+            height: 1em;
+        }
+        .dragHover{
+            background-color: blue;
+        }
+    </style> -->
+    <!-- This adds jQuery -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <header>
         <h1>My Vacation Planner</h1>
     </header>
     <nav>
-
+        <ul>
+            <li id="myPlansLnk"><a href="" alt="">My Plans</a></li>
+            <li id="searchLnk"><a href="" alt="">Search</a></li>
+            <li id="mapLnk"><a href="" alt="">Map</a></li>
+        </ul>
     </nav>
     <main>
-        <div id="map">
+        <section id="homePg">
+            <ul id="usrVacation"></ul>
+        </section>
 
-        </div>
-        <div>
-            <p id="exampleTest">Nope</p>
-        </div>
+        <section id="searchPg" class="hidden">
+            <form id="searchFrm">
+                <input name="srchStr" type="search" placeholder="Search for a Lighthouse">
+                <input type="submit" value="Search">
+            </form>
+            <ul id='srchResults'></ul>
+        </section>
+
+        <section id="mapPg" class="hidden">
+            <div id="closestMapBtn">Find my closest Lighthouse</div>
+            <div id="allMapBtn">See all Lighthouses</div>
+        </section>
+
+        <div id="highlightedSelection" class="hidden"><button id="highlightAdd">Add to my plans</button></div>
+        <div id="map"></div>
+
     </main>
-    <!-- <script src="libraries/marker/packages/markerclusterer/src/markerclusterer.js"></script> -->
     <script src="scripts/googleMap.js"></script>
+    <script src="libraries/dragndrop/dragNdrop.js" ></script>
+    <script src="scripts/index.js" type="module"></script>
+    <script src="scripts/search.js"></script>
+    <!-- <script src="scripts/map.js"></script> -->
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCegkp704SJvHca7Nl3vergJDs5eXpVV_Q&callback=initMap">
     </script> 

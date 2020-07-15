@@ -1,0 +1,39 @@
+/*************************************************************
+* Entire page CSS
+*************************************************************/
+.hidden {
+    display: none;
+}
+
+/*************************************************************
+* CSS for the vacation plans list
+*************************************************************/
+#usrVacation {
+    list-style: none;
+    padding: 0;
+}
+
+#usrVacation li {
+    height: 40px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: large;
+}
+
+#usrVacation li div img{
+    height: 40px;
+}
+
+.dropLoc {
+    height: .5em;
+}
+/*************************************************************
+* Map CSS
+*************************************************************/
+#map {
+    height: 500px;  
+    width: 100%;  
+}
