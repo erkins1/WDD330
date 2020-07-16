@@ -159,5 +159,5 @@ function buildEmptyItem(){
 
 //Run every time the list is changed so that local storage is always updates
 function updateLocal(list){
-    localStorage.setItem("myToDoList", JSON.stringify(list))
+    localStorage.setItem("myToDoList", JSON.stringify(list));
 }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandbox</title>
+    <style>
+        #ulList li {
+            height: 3em;
+        }
+        .dropLoc{
+            background-color: red;
+            height: 1em;
+        }
+        .dragHover{
+            background-color: blue;
+        }
+        #dragBox {
+            height: 200px;
+            width: 200px;
+            background-color: red;
+        }
+        #dropBox {
+            height: 200px;
+            width: 200px;
+            border: 5px solid black;
+            margin-top: 1em;
+            margin: auto;
+        }
+        
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Drag and Drop example</h1>
+        <ul id="ulList">
+            <div>
+                <div class="dropLoc"></div>
+                <li class="dragClass" draggable="true">Element 1</li>
+            </div>
+            <div>
+                <div class="dropLoc"></div>
+                <li class="dragClass" draggable="true">Element 2</li>
+            </div>
+            <div>
+                <div class="dropLoc"></div>
+                <li class="dragClass" draggable="true">Element 3</li>
+            </div>
+            <div>
+                <div class="dropLoc"></div>
+                <li class="dragClass" draggable="true">Element 4</li>
+            </div>
+            <div>
+                <div class="dropLoc"></div>
+                <li class="dragClass" draggable="true">Element 5</li>
+            </div>
+            <div>
+                <div class="dropLoc"></div>
+            </div>
+        </ul>
+        <div id="dragBox"></div>
+        <div id="dropBox"></div>
+    </main>
+    <script src="touchDrag.js" type="module"></script>
+</body>
+</html>

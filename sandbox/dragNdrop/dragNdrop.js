@@ -3,7 +3,7 @@
 
 //Apply the event listener to each li in the ul
 const ulList = document.querySelector("#ulList");
-
+addEvents();
 //Runs when user starts the drag action
 //  Saves the target html to the event
 function dragStartHandler(event){
