@@ -18,6 +18,7 @@ function searchLighthouses(event){
 
     const srchResults = document.querySelector('#srchResults');
     srchResults.innerHTML = "";
+    srchResults.classList.remove("hidden");
     let srchArray = [];
     data.forEach(element => {
         if(element.Name.toUpperCase().includes(query.toUpperCase())){
@@ -53,3 +54,4 @@ function srchResultEvents(){
         });
     });
 }
+

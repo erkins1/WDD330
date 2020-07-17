@@ -4,6 +4,7 @@
 body {
     margin: 0;
     width: 100%;
+    font-family: 'Cabin', sans-serif;
 }
 
 *   {
@@ -31,6 +32,7 @@ main{
 *************************************************************/
 header {
     text-align: center;
+    font-family: 'Lobster', cursive;
 }
 
 nav ul {
@@ -49,7 +51,7 @@ nav ul li{
     align-items: center;
     justify-content: center;
     min-height: 40px;
-
+    font-family: 'Lobster', cursive;
     border: 2px solid black;
 }
 
@@ -76,12 +78,14 @@ nav ul li{
     font-size: 1.25em;
     width: 100%
 }
+
 .destination_tools {
-    width: 80px;
+    display: flex;
+    flex-wrap: nowrap;
 }
+
 #usrVacation li div img{
     height: 40px;
-    width: 40px;
 }
 
 .dropLoc {
@@ -89,7 +93,16 @@ nav ul li{
 }
 
 /*Drag action hover CSS*/
-
+.dragHover{
+    height: 60px;
+    border: 6px dashed gray;
+    border-radius: 15px;
+    color: gray;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /*************************************************************
 * Map CSS
 *************************************************************/
@@ -131,6 +144,16 @@ nav ul li{
     font-size: .9em;
 }
 
+#srchResults{
+    list-style: none;
+    padding: 0;
+    font-size: 1.15em;
+}
+
+#srchResults li{
+    padding: 5px 0 5px 0;
+}
 /*************************************************************
 * Home Page
 *************************************************************/
+
