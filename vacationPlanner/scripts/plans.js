@@ -40,11 +40,10 @@ export default class Vacation {
             });
 
             let finalDiv = document.createElement("div");
-            finalDiv.innerHTML = `<div class="dropLoc" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)"></div>`;
+            finalDiv.innerHTML = `<div class="dropLoc"></div>`;
             this.plansUL.appendChild(finalDiv);
 
             //Add event listeners
-            addDragEvents();
             addLiEvents();
         }
     }
@@ -79,9 +78,7 @@ function buildLI(item){
     output.innerHTML = `<div class="dropLoc"></div>`;
     
     let li = document.createElement("li");
-    li.dataset.id = item.id;
-    li.draggable = true;
-    li.classList.add("dragClass");
+    li.dataset.id = item.id; 
 
     let nameDiv = document.createElement('div');
     let imgDiv = document.createElement('div');
@@ -90,7 +87,7 @@ function buildLI(item){
 
     nameDiv.innerHTML = item.Name;
     imgDiv.innerHTML = `<img class="destination_delImg" src="./source/images/trashcan.jpg">
-                        <img class="destination_dragImg" src="./source/images/drag.png">`;
+                        <img class="destination_dragImg dragClass" src="./source/images/drag.png">`;
     
     li.appendChild(nameDiv);
     li.appendChild(imgDiv);
@@ -127,11 +124,12 @@ function addLiEvents(){
     });
 
     //Enables drag events 
-    drags.forEach(li =>{
-        li.addEventListener("touchend", (event) =>{
-            console.log("I dragged it...");
-        });
-    });
+    //addTouchDragEventListeners();
+    // drags.forEach(li =>{
+    //     li.addEventListener("touchend", (event) =>{
+    //         console.log("I dragged it...");
+    //     });
+    // });
 }
 
 //Returns the distance between two objects

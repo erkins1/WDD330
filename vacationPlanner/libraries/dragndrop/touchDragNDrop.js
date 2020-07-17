@@ -1,5 +1,5 @@
 /************************************************
- * Example of a touch enabled drag and drop
+ * Touch enabled drag and drop
  ***********************************************/
 
 /************************************************
@@ -13,17 +13,6 @@ let dragHovering = false;
 /************************************************
  * Event Listener Declarations
  ***********************************************/
-//For the draggable element
-var dragBox = document.getElementById('dragBox');
-dragBox.addEventListener('touchstart', startDrag);
-dragBox.addEventListener('touchmove', moveDrag);    //Can I change this?
-dragBox.addEventListener('touchend', dropDrag);
-
-//For the dropbox elements
-//var dropbox = document.getElementById('dropBox');
-//dropbox.addEventListener()
-
-addTouchDragEventListeners();
 //For the draggable items
 //  Draggable elements need a dragClass class
 //  Drop locations need a dropLoc class
@@ -34,10 +23,7 @@ function addTouchDragEventListeners(){
         item.addEventListener('touchmove', moveDrag);
         item.addEventListener('touchend', dropDrag);
     });
-    // console.log("Added events");
 }
-
-
 
 
 /************************************************
@@ -45,9 +31,7 @@ function addTouchDragEventListeners(){
  ***********************************************/
 //Starts a timer before the ability to drag an object is enabled
 function startDrag(event){
-    //console.log("I touched the butt");
     touchHoldTimer = setTimeout(function(){
-        //console.log("Ding! Timer's up!");
         canBeDragged = true;
         startDraggingCSS(event);
     }, holdTimer);
@@ -57,9 +41,7 @@ function startDrag(event){
 //  Prevent scrolling as well
 function moveDrag(event){
     event.preventDefault();
-    if(canBeDragged){
-        //console.log("You are dragging me");
-        
+    if(canBeDragged){       
         let x = event.targetTouches[0].pageX; 
         let y = event.targetTouches[0].pageY;
         
@@ -71,37 +53,41 @@ function moveDrag(event){
         y = y - (event.target.offsetHeight / 2);
         event.target.style.left = x + 'px';
         event.target.style.top = y + 'px';
-    } else {
-        console.log("I'm stuck!");
-    }
+    } 
 }
 
 //Checks for the nessecary drop conditions
 //  Runs a drop function
 //  Stops any timeout functions
+//  Cleans up CSS changes
 //  Resets the canBeDragged boolean
-function dropDrag(event){
-    //console.log("You let go of me!");
-    
+function dropDrag(event){    
     //I have to use this because the element at those coordinates
     //  will be different by the time I run removeDragOverCSS
     let redundantElement = getHoverDropLoc(event);
     let completedDrop = false;
-
-    //This runs if there is a valid drop location
-    if(dragHovering){
-        completedDrop = acceptDrop(event);
+    try{
+        //This runs if there is a valid drop location
+        if(dragHovering){
+            completedDrop = acceptDrop(event);
+        } 
+        if(completedDrop){
+            //canICallFromTouch();
+            console.log(plans);
+        }
+    } catch (e){
+        console.log("There was an error dropping the element: " + e);
+    } finally {
+        //Cleanup has to happen no matter what
+        clearTimeout(touchHoldTimer);
+        if(canBeDragged){  
+            removeDraggingCSS(event);
+            if(redundantElement != -1){
+                removeDragOverCSS(redundantElement);
+            }
+        }
+        canBeDragged = false;  
     } 
-
-    //Cleanup
-    clearTimeout(touchHoldTimer);
-    if(canBeDragged){  
-        removeDraggingCSS(event);
-    }
-    if (completedDrop){
-        removeDragOverCSS(redundantElement);
-    }
-    canBeDragged = false;   
 }
 
 
@@ -110,16 +96,12 @@ function dropDrag(event){
  ***********************************************/
 //Checks to see if there is a drop location below the drag
 function dragOverCheck(elementsBelow){
-    //let dopLocation;
-    //console.log(elementsBelow);
-
     for(let i = 0; i < elementsBelow.length; i++){
         if(elementsBelow[i].className.includes("dropLoc")){
             dragHovering = true;
             dragOverCSS(elementsBelow[i]);
             return;
         } else {
-            //console.log("This should true " + dragHovering);
             dragHovering = false;
         }
     }
@@ -140,14 +122,12 @@ function dragOverCheck(elementsBelow){
 //Accept the drop when its in the right place
 function acceptDrop(event){
     let dropZone = getHoverDropLoc(event);
-    // console.log("You made it to the danger zone~");
-    // console.log(dropZone);
-    // console.log("Here's my data dump");
-    // console.log(event.target);
 
     //Now I have to insert the data in ul...
-    const daBigList = document.getElementById('ulList');
-    daBigList.insertBefore(event.target.parentElement, dropZone.parentElement);
+    const daBigList = document.getElementById('usrVacation');
+    var movingItem = event.path[3];    
+
+    daBigList.insertBefore(movingItem, dropZone.parentElement);
 
     return true;
 }
@@ -155,7 +135,6 @@ function acceptDrop(event){
 //Returns an element with the dropLoc class
 //  If there is a valid one below the cursor
 function getHoverDropLoc(event){
-    //console.log(event);
     let x = event.changedTouches[0].pageX; 
     let y = event.changedTouches[0].pageY;
     
@@ -173,7 +152,6 @@ function getHoverDropLoc(event){
  ***********************************************/
 //Makes the item look draggable
 function startDraggingCSS(event){
-    
     let dragElement = event.target;
     dragElement.style.backgroundColor = "blue";
     dragElement.style.position = "absolute";

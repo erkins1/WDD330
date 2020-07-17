@@ -5,18 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vacation Planner</title>
     <link rel="stylesheet" type="text/css" href="styles/stylesheet.css">
-    <!-- <style>
-        #ulList li {
-            height: 3em;
-        }
-        .dropLoc{
-            background-color: red;
-            height: 1em;
-        }
-        .dragHover{
-            background-color: blue;
-        }
-    </style> -->
     <!-- This adds jQuery -->
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -26,7 +14,7 @@
     </header>
     <nav>
         <ul>
-            <li id="myPlansLnk">My Plans</li>
+            <li id="myPlansLnk" class="active">My Plans</li>
             <li id="searchLnk">Search</li>
             <li id="mapLnk">Map</li>
         </ul>
@@ -57,8 +45,9 @@
 
     </main>
     <script src="scripts/googleMap.js"></script>
-    <script src="libraries/dragndrop/dragNdrop.js" ></script>
+    
     <script src="scripts/index.js" type="module"></script>
+    <!-- <script src="libraries/dragndrop/touchDragNdrop.js" ></script> -->
     <script src="scripts/search.js"></script>
     <!-- <script src="scripts/map.js"></script> -->
     <script async defer
