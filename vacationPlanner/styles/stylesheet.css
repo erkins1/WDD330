@@ -26,7 +26,6 @@ main{
     margin: 1em;
 }
 
-
 /*************************************************************
 * CSS for the Nav bar and header
 *************************************************************/
@@ -83,9 +82,23 @@ nav ul li{
     display: flex;
     flex-wrap: nowrap;
 }
-
+/*
 #usrVacation li div img{
     height: 40px;
+}
+*/
+.destination_delImg{
+    background-image: url("../source/images/trashcan.jpg");
+    background-size: cover;
+    height: 40px;
+    width: 40px;
+}
+
+.destination_dragImg{
+    background-image: url("../source/images/drag.png");
+    background-size: cover;
+    height: 40px;
+    width: 40px;
 }
 
 .dropLoc {

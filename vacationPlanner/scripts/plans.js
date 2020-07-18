@@ -86,8 +86,10 @@ function buildLI(item){
     imgDiv.classList.add("destination_tools");
 
     nameDiv.innerHTML = item.Name;
-    imgDiv.innerHTML = `<img class="destination_delImg" src="./source/images/trashcan.jpg">
-                        <img class="destination_dragImg dragClass" src="./source/images/drag.png">`;
+    imgDiv.innerHTML = `<div class="destination_delImg" ></div>
+                        <div class="destination_dragImg dragClass"></div>`;
+    // imgDiv.innerHTML = `<img class="destination_delImg" src="./source/images/trashcan.jpg">
+    //                     <img class="destination_dragImg dragClass" src="./source/images/drag.png">`;
     
     li.appendChild(nameDiv);
     li.appendChild(imgDiv);
